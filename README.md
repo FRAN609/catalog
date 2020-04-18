@@ -1,6 +1,10 @@
 <!-- https://raw.githubusercontent.com/electron/electron-apps/master/readme.md --->
 
-# Catalog
+# Catalog [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](LICENSE)
+|Catalog for WebCatalog|
+|---|
+|![Catalog for WebCatalog](https://github.com/atomery/catalog/workflows/Catalog%20for%20WebCatalog/badge.svg)|
+
 Web app database, used by [WebCatalog](https://webcatalogapp.com) & [Singlebox](https://singleboxapp.com).
 
 If you have an web application you'd like to see added, follow the instructions.
