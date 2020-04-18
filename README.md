@@ -3,7 +3,7 @@
 # Catalog [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](LICENSE)
 |Catalog for WebCatalog|
 |---|
-|![Catalog for WebCatalog](https://github.com/atomery/catalog/workflows/Catalog%20for%20WebCatalog/badge.svg)|
+|[![Catalog for WebCatalog](https://github.com/atomery/catalog/workflows/Catalog%20for%20WebCatalog/badge.svg)](https://github.com/atomery/catalog/actions?query=workflow%3A%22Catalog+for+WebCatalog%22)|
 
 Web app database, used by [WebCatalog](https://webcatalogapp.com) & [Singlebox](https://singleboxapp.com).
 

@@ -1,9 +1,11 @@
 // https://github.com/electron/electron-apps/blob/master/script/pack.js
-const fs = require('fs-extra');
-const path = require('path');
 const Queue = require('promise-queue');
+const fs = require('fs-extra');
+const imageSize = require('image-size');
+const path = require('path');
 const sharp = require('sharp');
 const yaml = require('yamljs');
+const { exec } = require('child_process');
 
 const apps = [];
 const appPath = path.join(__dirname, '../apps');
@@ -13,6 +15,26 @@ const distPath = path.join(__dirname, '../dist');
 const maxConcurrent = 20;
 const maxQueue = Infinity;
 const queue = new Queue(maxConcurrent, maxQueue);
+
+const fixIconPyPath = path.join(__dirname, 'fixicon.py');
+
+const fixIconAsync = (iconPath) => new Promise((resolve, reject) => {
+  const size = imageSize(iconPath).width;
+  const pad = Math.round((size / 512) * 20); // need to find a better formula
+
+  exec(`python3 ${fixIconPyPath} ${iconPath} ${size} ${pad}`, (e, stdout, stderr) => {
+    if (e instanceof Error) {
+      reject(e);
+      return;
+    }
+
+    // eslint-disable-next-line no-console
+    console.log(stdout);
+
+    resolve({ stdout, stderr });
+  });
+});
+
 
 fs.readdirSync(appPath)
   .filter((filename) => fs.statSync(path.join(appPath, filename)).isDirectory())
@@ -31,14 +53,15 @@ fs.readdirSync(appPath)
 
     fs.copySync(iconFile, copiedIconFile);
 
-    queue.add(() => sharp(copiedIconFile)
-      .resize(128, 128)
-      .toFile(path.join(distPath, `${slug}/${slug}-icon-128.png`)))
+    queue.add(() => fixIconAsync(copiedIconFile)
+      .then(() => sharp(copiedIconFile)
+        .resize(128, 128)
+        .toFile(path.join(distPath, `${slug}/${slug}-icon-128.png`)))
       .catch((e) => {
         // eslint-disable-next-line
         console.log(e);
         process.exit(1);
-      });
+      }));
 
     apps.push(app);
   });

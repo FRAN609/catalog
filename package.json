@@ -9,6 +9,7 @@
   "author": "Quang Lam <quang.lam2807@gmail.com>",
   "private": true,
   "scripts": {
+    "install": "pip3 install --user -r requirements.txt",
     "test": "mocha --reporter min tests/human-data.js",
     "lint": "eslint ./lib ./tests ./scripts --ext js",
     "build:pack": "node scripts/pack.js",
