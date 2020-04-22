@@ -27,6 +27,7 @@ jobs:
         python-version: 3.x
         architecture: x64
     - run: yarn
+    - run: yarn lint
     - run: yarn test
     - run: yarn build:pack:singlebox
     - name: Upload icons to S3

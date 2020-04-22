@@ -11,7 +11,7 @@
   "scripts": {
     "install": "pip3 install --user -r requirements.txt",
     "test": "mocha --reporter min tests/human-data.js",
-    "lint": "eslint ./lib ./tests ./scripts --ext js",
+    "lint": "eslint ./tests ./scripts --ext js",
     "build:pack:webcatalog": "cross-env APP_ID=webcatalog node scripts/pack.js",
     "build:pack:singlebox": "cross-env APP_ID=singlebox node scripts/pack.js",
     "build:publish": "node scripts/publish.js"
