@@ -48,12 +48,17 @@ fs.readdirSync(appPath)
       icon128: `https://s3.getwebcatalog.com/apps/${slug}/${slug}-icon-128.png`,
     };
 
-    const iconFile = path.join(appPath, `${slug}/${slug}-icon.png`);
+    const iconName = process.env.APP_ID === 'singlebox' ? `${slug}-icon-filled.png` : `${slug}-icon.png`;
+    const iconFile = path.join(appPath, slug, iconName);
     const copiedIconFile = path.join(distPath, `${slug}/${slug}-icon.png`);
 
     fs.copySync(iconFile, copiedIconFile);
 
-    queue.add(() => fixIconAsync(copiedIconFile)
+    queue.add(() => Promise.resolve()
+      .then(() => {
+        if (process.env.APP_ID === 'singlebox') return null;
+        return fixIconAsync(copiedIconFile);
+      })
       .then(() => sharp(copiedIconFile)
         .resize(128, 128)
         .toFile(path.join(distPath, `${slug}/${slug}-icon-128.png`)))

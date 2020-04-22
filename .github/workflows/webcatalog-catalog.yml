@@ -28,7 +28,7 @@ jobs:
         architecture: x64
     - run: yarn
     - run: yarn test
-    - run: yarn build:pack
+    - run: yarn build:pack:webcatalog
     - name: Push metadata to Algolia
       run: yarn build:publish
       env:

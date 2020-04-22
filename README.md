@@ -1,9 +1,9 @@
 <!-- https://raw.githubusercontent.com/electron/electron-apps/master/readme.md --->
 
 # Catalog [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](LICENSE)
-|Catalog for WebCatalog|
-|---|
-|[![Catalog for WebCatalog](https://github.com/atomery/catalog/workflows/Catalog%20for%20WebCatalog/badge.svg)](https://github.com/atomery/catalog/actions?query=workflow%3A%22Catalog+for+WebCatalog%22)|
+|Catalog for WebCatalog|Catalog for Singlebox|
+|---|---|
+|[![Catalog for WebCatalog](https://github.com/atomery/catalog/workflows/Catalog%20for%20WebCatalog/badge.svg)](https://github.com/atomery/catalog/actions?query=workflow%3A%22Catalog+for+WebCatalog%22)|[![Catalog for Singlebox](https://github.com/atomery/catalog/workflows/Catalog%20for%20Singlebox/badge.svg)](https://github.com/atomery/catalog/actions?query=workflow%3A%22Catalog+for+Singlebox%22)|
 
 Web app database, used by [WebCatalog](https://webcatalogapp.com) & [Singlebox](https://singleboxapp.com).
 
@@ -42,7 +42,7 @@ If you have an web application you'd like to see added, please [create a new iss
 An easy way to add a new app is to copy an existing app and edit its metadata.
 
 To do so, create a new directory in the `apps` directory and include a `.yml`
-file and `.png` icon file. The directory can only contain numbers,
+file and two `.png` icon files (transparent one for WebCatalog and filled one for Singlebox). The directory can only contain numbers,
 lowercase letters, and dashes, and the yml and icon files should be named
 like so:
 
@@ -50,6 +50,7 @@ like so:
 apps
 └── my-cool-app
     ├── my-cool-app-icon.png
+    ├── my-cool-app-icon-filled.png
     └── my-cool-app.yml
 ```
 
