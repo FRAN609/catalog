@@ -40,12 +40,13 @@ fs.readdirSync(appPath)
   .filter((filename) => fs.statSync(path.join(appPath, filename)).isDirectory())
   .forEach((slug) => {
     const yamlFile = path.join(appPath, `${slug}/${slug}.yml`);
+    const s3Url = process.env.APP_ID === 'singlebox' ? 'https://s3.singleboxapp.com' : 'https://s3.getwebcatalog.com';
     const app = {
       id: slug,
       objectID: slug,
       ...yaml.load(yamlFile),
-      icon: `https://s3.singleboxapp.com/apps/${slug}/${slug}-icon.png`,
-      icon128: `https://s3.singleboxapp.com/apps/${slug}/${slug}-icon-128.png`,
+      icon: `https://${s3Url}/apps/${slug}/${slug}-icon.png`,
+      icon128: `https://${s3Url}/apps/${slug}/${slug}-icon-128.png`,
     };
 
     const iconName = process.env.APP_ID === 'singlebox' ? `${slug}-icon-filled.png` : `${slug}-icon.png`;
