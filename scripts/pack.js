@@ -45,8 +45,8 @@ fs.readdirSync(appPath)
       id: slug,
       objectID: slug,
       ...yaml.load(yamlFile),
-      icon: `https://${s3Url}/apps/${slug}/${slug}-icon.png`,
-      icon128: `https://${s3Url}/apps/${slug}/${slug}-icon-128.png`,
+      icon: `${s3Url}/apps/${slug}/${slug}-icon.png`,
+      icon128: `${s3Url}/apps/${slug}/${slug}-icon-128.png`,
     };
 
     const iconName = process.env.APP_ID === 'singlebox' ? `${slug}-icon-filled.png` : `${slug}-icon.png`;
